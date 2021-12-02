@@ -2,6 +2,8 @@
 ___
 The project is the first step studying Jenkins.
 
+
+
 ## Acknowledgement
 ___
 [Vasenkov Stanislav](https://github.com/svasenkov)
@@ -15,7 +17,8 @@ ___
 
 ## Steps
 1. Create a structure of the project: files readme.md, .gitignore and build.gradle, directories main and test. 
-
+2. Set dependencies JUnit5, Selenide and Allure Report in build.gradle. Checked sets by test class `ExTests`.
+3. 
 
 ## What's new
 ### Jenkins
@@ -48,5 +51,10 @@ P.s. Строка и блок кода "compileJava" относится к ко�
 4) Обновить градл после внесенных изменений.
 5)Перезапустить IDE (полностью выйти из нее и зайти заново)
 Всё, теперь можно запускать код, должно всё корректно отображаться ) 
+
+[2. Get Allure Gradle Plugun](https://plugins.gradle.org/plugin/io.qameta.allure)
+`id "io.qameta.allure" version "2.9.6"`
+
+[3. Docs Allure](https://docs.qameta.io/allure-report/frameworks/java/junit5)
 
 ## Notes of Reviewer

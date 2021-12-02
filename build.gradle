@@ -1,5 +1,26 @@
 plugins {
     id "java-library"
+    id "io.qameta.allure" version "2.9.6"
+}
+
+
+allure {
+    report {
+        version.set("2.14.0")
+    }
+    adapter {
+        autoconfigure.set(true)
+        //autoconfigureListeners.set(true)
+        aspectjWeaver.set(true)
+
+        frameworks {
+            junit5 {
+                autoconfigureListeners.set(true)
+                adapterVersion.set("2.14.0")
+                enabled.set(true)
+            }
+        }
+    }
 }
 
 repositories {
@@ -7,8 +28,12 @@ repositories {
 }
 
 dependencies {
-    //testImplementation
-    //testRuntimeOnly
+    // JUnit5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    //Selenide
+    testImplementation 'com.codeborne:selenide:5.25.0-selenium-4.0.0'
 }
 
 test {
