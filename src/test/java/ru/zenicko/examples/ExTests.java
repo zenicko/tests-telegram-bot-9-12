@@ -7,6 +7,6 @@ public class ExTests {
 
     @Test
     void testApplyAllure(){
-        Assertions.assertTrue(true);
+        Assertions.assertTrue(false);
     }
 }

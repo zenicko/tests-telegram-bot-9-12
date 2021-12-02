@@ -3,10 +3,15 @@ ___
 The project is the first step studying Jenkins.
 
 
-
-## Acknowledgement
+## Acknowledgements
 ___
-[Vasenkov Stanislav](https://github.com/svasenkov)
+[**Vasenkov Stanislav**](https://github.com/svasenkov)
+
+[**Artem Eroshenko**](https://github.com/eroshenkoam) 
+
+[**Dmitrii Tuchs**](https://github.com/dtuchs)
+
+[**Alexei Vinogradov**](https://github.com/vinogradoff)
 
 ## About home task
 ___
@@ -18,7 +23,8 @@ ___
 ## Steps
 1. Create a structure of the project: files readme.md, .gitignore and build.gradle, directories main and test. 
 2. Set dependencies JUnit5, Selenide and Allure Report in build.gradle. Checked sets by test class `ExTests`.
-3. 
+3. Include the code testing of the form from [demoqa.com](https://demoqa.com/automation-practice-form). Make some srceenshots.
+4. Create methods of logging
 
 ## What's new
 ### Jenkins
@@ -26,7 +32,8 @@ ___
 
 ## Resources
 
-[1. Problems with coding. See comment Alex in home task of `Анна Блинова`](https://qa.guru/pl/teach/control/lesson/view?id=219025037&editMode=0)
+[1. Problems with view of russian letters in a console. 
+See Alex' comment in hometask of `Анна Блинова`](https://qa.guru/pl/teach/control/lesson/view?id=219025037&editMode=0)
 
 **Or here)**
 
@@ -56,5 +63,21 @@ P.s. Строка и блок кода "compileJava" относится к ко�
 `id "io.qameta.allure" version "2.9.6"`
 
 [3. Docs Allure](https://docs.qameta.io/allure-report/frameworks/java/junit5)
+
+
+
+https://gitter.im/allure-framework/allure-core?at=5b728c33937eee242315c1f2
+
+@Attachment(value = "Html source", type = "text/html", fileExtension = ".html")
+public static byte[] getPageSource() {
+return getPageSourceBytes();
+}
+
+public static byte[] getPageSourcetBytes() {
+return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
+}
+
+lifeCycle.addAttachment(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy_hh-mm-ss")),
+"image/png", "png", takeScreenShot());
 
 ## Notes of Reviewer
