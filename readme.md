@@ -27,6 +27,7 @@ ___
 4. Create methods of logging.
 5. Change build.gradle, add ex-logging.
 6. Add using selenoid.
+7. Change method upload file in the form
 
 ## What's new
 ### Jenkins

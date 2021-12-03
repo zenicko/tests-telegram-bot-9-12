@@ -14,7 +14,6 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,11 +36,11 @@ public class PracticeFormTests {
         Configuration.startMaximized = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
 
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("enableVNC", true);
-//        capabilities.setCapability("enableVideo", true);
-//
-//        Configuration.browserCapabilities = capabilities;
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach
@@ -66,7 +65,7 @@ public class PracticeFormTests {
                 checkedDateOfBirthInput = "5 November,2000",
                 subjectsInput = "Hindi",
                 currentAddress = "RU, Moscow, st. Baba Galya, 1",
-                fullPath = "D:\\IDEAProjects\\demoqa-tests-9\\src\\test\\resources\\photo_2020-11-17_15-25-27.jpg";
+                fullPath = "img/photo_2020-11-17_15-25-27.jpg";
         Boolean hobbiesCheckbox1 = true,
                 hobbiesCheckbox2 = true,
                 hobbiesCheckbox3 = true;
@@ -78,8 +77,6 @@ public class PracticeFormTests {
                 Hobbies = "",
                 stateAndCity = "";
         int pos;
-        File cv = new File(fullPath);
-
 
         open("https://demoqa.com/automation-practice-form");
         //Name
@@ -139,10 +136,10 @@ public class PracticeFormTests {
         }
 
         //Scroll page
-        $("#submit").scrollIntoView(true);
+        //$("#submit").scrollIntoView(true);
 
         //Picture
-        $("#uploadPicture").uploadFile(cv);
+        $("#uploadPicture").uploadFromClasspath(fullPath);
 
         //Current Address
         $("#currentAddress").setValue(currentAddress);
@@ -191,7 +188,7 @@ public class PracticeFormTests {
 
         //Check Picture
         System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(7).$$("td").get(1));
-        pos = fullPath.lastIndexOf("\\") + 1;
+        pos = fullPath.lastIndexOf("/") + 1;
         stemp = fullPath.substring(pos);
         $$(".table-responsive tbody tr").get(7).$$("td").get(1).shouldHave(text(stemp));
 
