@@ -24,7 +24,8 @@ ___
 1. Create a structure of the project: files readme.md, .gitignore and build.gradle, directories main and test. 
 2. Set dependencies JUnit5, Selenide and Allure Report in build.gradle. Checked sets by test class `ExTests`.
 3. Include the code testing of the form from [demoqa.com](https://demoqa.com/automation-practice-form). Make some srceenshots.
-4. Create methods of logging
+4. Create methods of logging.
+5. Change build.gradle, add ex-logging.
 
 ## What's new
 ### Jenkins
