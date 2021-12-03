@@ -26,6 +26,7 @@ ___
 3. Include the code testing of the form from [demoqa.com](https://demoqa.com/automation-practice-form). Make some srceenshots.
 4. Create methods of logging.
 5. Change build.gradle, add ex-logging.
+6. Add using selenoid.
 
 ## What's new
 ### Jenkins
