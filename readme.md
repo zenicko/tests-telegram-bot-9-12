@@ -30,6 +30,8 @@ ___
 7. Change method upload file in the form
 8. Change version of selenide from 5.25 to 5.24. Unwork uploadFromClasspath. 
 9. Change slash to backslash. 
+### The branch refactclassextests
+10. Change class ExTests: added different methods for present some features.
 
 ## What's new
 ### Jenkins
