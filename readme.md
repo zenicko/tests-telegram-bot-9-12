@@ -29,6 +29,7 @@ ___
 6. Add using selenoid.
 7. Change method upload file in the form
 8. Change version of selenide from 5.25 to 5.24. Unwork uploadFromClasspath. 
+9. Change slash to backslash. 
 
 ## What's new
 ### Jenkins

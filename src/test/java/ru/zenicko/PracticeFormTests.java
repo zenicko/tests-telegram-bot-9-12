@@ -65,7 +65,7 @@ public class PracticeFormTests {
                 checkedDateOfBirthInput = "5 November,2000",
                 subjectsInput = "Hindi",
                 currentAddress = "RU, Moscow, st. Baba Galya, 1",
-                fullPath = "img\\photo_2020-11-17_15-25-27.jpg";
+                fullPath = "img/photo_2020-11-17_15-25-27.jpg";
         Boolean hobbiesCheckbox1 = true,
                 hobbiesCheckbox2 = true,
                 hobbiesCheckbox3 = true;
@@ -188,7 +188,7 @@ public class PracticeFormTests {
 
         //Check Picture
         System.out.println("Check Student Picture:" + $$(".table-responsive tbody tr").get(7).$$("td").get(1));
-        pos = fullPath.lastIndexOf("\\") + 1;
+        pos = fullPath.lastIndexOf("/") + 1;
         stemp = fullPath.substring(pos);
         $$(".table-responsive tbody tr").get(7).$$("td").get(1).shouldHave(text(stemp));
 
