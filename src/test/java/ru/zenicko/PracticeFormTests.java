@@ -1,74 +1,24 @@
 package ru.zenicko;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.logging.LogType.BROWSER;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
-public class PracticeFormTests {
-
-    private AllureLifecycle lifeCycle;
-
-    @BeforeAll
-    static void screenSize() {
-        Configuration.startMaximized = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-
-        Configuration.browserCapabilities = capabilities;
-    }
-
-    @BeforeEach
-    void setLifeCycle() {
-        lifeCycle = Allure.getLifecycle();
-    }
+@DisplayName("Ya, Jenkins will be with you everywhere!")
+public class PracticeFormTests extends BaseClass {
 
     @Test
-    @DisplayName("Ya, Jenkins will be with you everywhere!")
-    @Feature("Testing the form from https://demoqa.com/automation-practice-form")
+    @DisplayName("Testing the students form")
+    @Feature("The form from https://demoqa.com/automation-practice-form")
     @Story("Using the common pattern")
     @Owner("Zenicko Co")
     void practiceFormTests() {
-
-        //The test data
-        String firstName = "Nick",
-                lastName = "Ivanov",
-                userEmail = "aaa@aa.aa",
-                genderRadio = "gender-radio-1",
-                userNumber = "9991234567",
-                dateOfBirthInput = "5 Nov 2000",
-                checkedDateOfBirthInput = "5 November,2000",
-                subjectsInput = "Hindi",
-                currentAddress = "RU, Moscow, st. Baba Galya, 1",
-                fullPath = "img/photo_2020-11-17_15-25-27.jpg";
-        Boolean hobbiesCheckbox1 = true,
-                hobbiesCheckbox2 = true,
-                hobbiesCheckbox3 = true;
+        Map<String, String> expectedData = (new DataTests()).getDataForForm();
         //The some variables
         String
                 gender = "",
@@ -80,22 +30,18 @@ public class PracticeFormTests {
 
         open("https://demoqa.com/automation-practice-form");
         //Name
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
+        $("#firstName").setValue(expectedData.get("Student firstName"));
+        $("#lastName").setValue(expectedData.get("Student lastName"));
         //Email
-        $("#userEmail").setValue(userEmail);
+        $("#userEmail").setValue(expectedData.get("Student Email"));
 
         //Gender
-        switch (genderRadio) {
-            case "gender-radio-1":
-                $$(".custom-control-label").get(0).click();
-                gender = "Male";
-                break;
-            case "gender-radio-2":
+        switch (expectedData.get("Gender")) {
+            case "Female":
                 $$(".custom-control-label").get(1).click();
                 gender = "Female";
                 break;
-            case "gender-radio-3":
+            case "Other":
                 $$(".custom-control-label").get(2).click();
                 gender = "Other";
                 break;
@@ -105,32 +51,33 @@ public class PracticeFormTests {
         }
 
         //Mobile(10 Digits)
-        $("#userNumber").setValue(userNumber);
+        $("#userNumber").setValue(expectedData.get("Mobile"));
 
         //Date of Birth
         $("#dateOfBirthInput").click();
         currentDate = $("#dateOfBirthInput").getAttribute("value");
         System.out.println("currentDate " + currentDate);
         //$("#dateOfBirthInput").clear();
-        for (int i = 1; i <= dateOfBirthInput.length(); i++) {
+        for (int i = 1; i <= expectedData.get("Date of Birth").length(); i++) {
             $("#dateOfBirthInput").sendKeys(Keys.BACK_SPACE);
         }
-        $("#dateOfBirthInput").setValue(dateOfBirthInput);
+        $("#dateOfBirthInput").setValue(expectedData.get("Date of Birth"));
 
         //Subjects
-        $("#subjectsInput").setValue(subjectsInput);
+        $("#subjectsInput").setValue(expectedData.get("Subjects"));
         $("#react-select-2-option-0").click();
 
         //Hobbies
-        if (hobbiesCheckbox1) {
+
+        if (expectedData.get("Hobbies").contains("Sports")) {
             $("#hobbiesWrapper").$$(".custom-control-label").get(0).click();
             Hobbies = "Sports";
         }
-        if (hobbiesCheckbox2) {
+        if (expectedData.get("Hobbies").contains("Reading")) {
             $("#hobbiesWrapper").$$(".custom-control-label").get(1).click();
             Hobbies += Hobbies == "" ? "Reading" : ", Reading";
         }
-        if (hobbiesCheckbox3) {
+        if (expectedData.get("Hobbies").contains("Music")) {
             $("#hobbiesWrapper").$$(".custom-control-label").get(2).click();
             Hobbies += Hobbies == "" ? "Music" : ", Music";
         }
@@ -139,10 +86,10 @@ public class PracticeFormTests {
         //$("#submit").scrollIntoView(true);
 
         //Picture
-        $("#uploadPicture").uploadFromClasspath(fullPath);
+        $("#uploadPicture").uploadFromClasspath(expectedData.get("Picture"));
 
         //Current Address
-        $("#currentAddress").setValue(currentAddress);
+        $("#currentAddress").setValue(expectedData.get("Address"));
 
         //State and City
         $("#state .css-yk16xz-control").click();
@@ -153,106 +100,77 @@ public class PracticeFormTests {
         $("#react-select-4-option-0").click(); //.shouldBe(visible)
         stateAndCity += " " + $$(".css-1uccc91-singleValue").get(1).getText();
 
-        lifeCycle.addAttachment("Screenshot", "image/png", "png", takeScreenShot());
         //Submit
         $("#submit").click();
 
+
         //Check Student Name: fist name + last name
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(0).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(0).$$("td").get(1).shouldHave(text(firstName + ' ' + lastName));
+        System.out.println("Check Student Name:" +
+                $$(".table-responsive tbody tr").get(0).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(0)
+                .$$("td").get(1).shouldHave(text(expectedData.get("Student firstName") +
+                        ' ' + expectedData.get("Student lastName")));
 
         //Check Student Email
-        System.out.println("Check Student Emaile:" + $$(".table-responsive tbody tr").get(1).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(1).$$("td").get(1).shouldHave(text(userEmail));
+        System.out.println("Check Student Emaile:" +
+                $$(".table-responsive tbody tr").get(1).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(1).
+                $$("td").get(1).shouldHave(text(expectedData.get("Student Email")));
 
         //Check Gender
-        System.out.println("Check Gender:" + $$(".table-responsive tbody tr").get(2).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(2).$$("td").get(1).shouldHave(text(gender));
+        System.out.println("Check Gender:" +
+                $$(".table-responsive tbody tr").get(2).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(2).$$("td").get(1).
+                shouldHave(text(gender));
 
         //Check Mobile
-        System.out.println("Check Student Mobile:" + $$(".table-responsive tbody tr").get(3).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(3).$$("td").get(1).shouldHave(text(userNumber));
+        System.out.println("Check Student Mobile:" +
+                $$(".table-responsive tbody tr").get(3).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(3).$$("td").get(1).
+                shouldHave(text(expectedData.get("Mobile")));
 
         //Check Date of Birth
-        System.out.println("Check Student Date of Birth:" + $$(".table-responsive tbody tr").get(4).$$("td").get(1));
-        stemp = currentDate.substring(0, 0) + checkedDateOfBirthInput;
-        $$(".table-responsive tbody tr").get(4).$$("td").get(1).shouldHave(text(stemp));
+        System.out.println("Check Student Date of Birth:" +
+                $$(".table-responsive tbody tr").get(4).$$("td").get(1));
+        stemp = currentDate.substring(0, 0) + expectedData.get("Checking Date of Birth");
+        $$(".table-responsive tbody tr").get(4).$$("td").get(1).
+                shouldHave(text(stemp));
 
         //Check Subjects
-        System.out.println("Check Student Subjects:" + $$(".table-responsive tbody tr").get(5).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(5).$$("td").get(1).shouldHave(text(subjectsInput));
+        System.out.println("Check Student Subjects:" +
+                $$(".table-responsive tbody tr").get(5).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(5).$$("td").get(1).
+                shouldHave(text(expectedData.get("Subjects")));
 
         //Check Hobbies
-        System.out.println("Check Student Hobbies:" + $$(".table-responsive tbody tr").get(6).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(6).$$("td").get(1).shouldHave(text(Hobbies));
+        System.out.println("Check Student Hobbies:" +
+                $$(".table-responsive tbody tr").get(6).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(6).$$("td").get(1).
+                shouldHave(text(Hobbies));
 
         //Check Picture
-        System.out.println("Check Student Picture:" + $$(".table-responsive tbody tr").get(7).$$("td").get(1));
-        pos = fullPath.lastIndexOf("/") + 1;
-        stemp = fullPath.substring(pos);
-        $$(".table-responsive tbody tr").get(7).$$("td").get(1).shouldHave(text(stemp));
+        System.out.println("Check Student Picture:" +
+                $$(".table-responsive tbody tr").get(7).$$("td").get(1));
+        pos = expectedData.get("Picture").lastIndexOf("\\") + 1;
+        stemp = expectedData.get("Picture").substring(pos);
+        $$(".table-responsive tbody tr").get(7).$$("td").get(1).
+                shouldHave(text(stemp));
 
         //Check Current Address
-        System.out.println("Check Student Current Address:" + $$(".table-responsive tbody tr").get(8).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(8).$$("td").get(1).shouldHave(text(currentAddress));
+        System.out.println("Check Student Current Address:" +
+                $$(".table-responsive tbody tr").get(8).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(8).$$("td").get(1).
+                shouldHave(text(expectedData.get("Address")));
 
         //Check State and City
-        System.out.println("Check State and City:" + $$(".table-responsive tbody tr").get(9).$$("td").get(1));
-        $$(".table-responsive tbody tr").get(9).$$("td").get(1).shouldHave(text(stateAndCity));
+        System.out.println("Check State and City:" +
+                $$(".table-responsive tbody tr").get(9).$$("td").get(1));
+        $$(".table-responsive tbody tr").get(9).$$("td").get(1).
+                shouldHave(text(stateAndCity));
 
         System.out.println("The test is done!");
 
-        lifeCycle.addAttachment("Screenshot", "image/png", "png", takeScreenShot());
-        lifeCycle.addAttachment("Screenshot " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy_HH-mm-ss")),
-                "image/png",
-                "png",
-                takeScreenShot());
-        lifeCycle.addAttachment("Html source", "text/html", "html", getPageSourceBytes());
-        lifeCycle.addAttachment("Console log", "text/plain", "txt", getConsoleLog());
-        addVideo();
-    }
-
-    private byte[] takeScreenShot() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
-    private byte[] getPageSourceBytes() {
-        return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
-    }
-
-    private byte[] getConsoleLog() {
-        //LogType.BROWSER
-        String logs = "";
-        for (LogEntry logEntry : WebDriverRunner.getWebDriver().manage().logs().get(BROWSER).getAll()) {
-            logs += logEntry.toString() + "\n";
-        }
-
-        return logs.getBytes(StandardCharsets.UTF_8);
-    }
-
-
-    //Attach svasenkov
-
-    @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-    public static String addVideo() {
-        return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-                + getVideoUrl(getSessionId())
-                + "' type='video/mp4'></video></body></html>";
-    }
-
-    public static URL getVideoUrl(String sessionId) {
-        String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
-
-        try {
-            return new URL(videoUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static String getSessionId() {
-        return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+        attachmentsAll();
     }
 }
 

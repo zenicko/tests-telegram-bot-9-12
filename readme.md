@@ -31,7 +31,10 @@ ___
 8. Change version of selenide from 5.25 to 5.24. Unwork uploadFromClasspath. 
 9. Change slash to backslash. 
 ### The branch refactclassextests
-10. Change class ExTests: added different methods for present some features.
+10. Changed class ExTests: added different methods for present some features.
+### The branch refactoringclassPFT
+11. Created class `BaseClass`. Refactoring class `PracticeFormTests`. Created class `Attachments`. 
+
 
 ## What's new
 ### Jenkins
