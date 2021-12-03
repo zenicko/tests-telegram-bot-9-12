@@ -65,7 +65,7 @@ public class PracticeFormTests {
                 checkedDateOfBirthInput = "5 November,2000",
                 subjectsInput = "Hindi",
                 currentAddress = "RU, Moscow, st. Baba Galya, 1",
-                fullPath = "img/photo_2020-11-17_15-25-27.jpg";
+                fullPath = "img\\photo_2020-11-17_15-25-27.jpg";
         Boolean hobbiesCheckbox1 = true,
                 hobbiesCheckbox2 = true,
                 hobbiesCheckbox3 = true;
@@ -162,42 +162,42 @@ public class PracticeFormTests {
         $$(".table-responsive tbody tr").get(0).$$("td").get(1).shouldHave(text(firstName + ' ' + lastName));
 
         //Check Student Email
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(1).$$("td").get(1));
+        System.out.println("Check Student Emaile:" + $$(".table-responsive tbody tr").get(1).$$("td").get(1));
         $$(".table-responsive tbody tr").get(1).$$("td").get(1).shouldHave(text(userEmail));
 
         //Check Gender
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(2).$$("td").get(1));
+        System.out.println("Check Gender:" + $$(".table-responsive tbody tr").get(2).$$("td").get(1));
         $$(".table-responsive tbody tr").get(2).$$("td").get(1).shouldHave(text(gender));
 
         //Check Mobile
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(3).$$("td").get(1));
+        System.out.println("Check Student Mobile:" + $$(".table-responsive tbody tr").get(3).$$("td").get(1));
         $$(".table-responsive tbody tr").get(3).$$("td").get(1).shouldHave(text(userNumber));
 
         //Check Date of Birth
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(4).$$("td").get(1));
+        System.out.println("Check Student Date of Birth:" + $$(".table-responsive tbody tr").get(4).$$("td").get(1));
         stemp = currentDate.substring(0, 0) + checkedDateOfBirthInput;
         $$(".table-responsive tbody tr").get(4).$$("td").get(1).shouldHave(text(stemp));
 
         //Check Subjects
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(5).$$("td").get(1));
+        System.out.println("Check Student Subjects:" + $$(".table-responsive tbody tr").get(5).$$("td").get(1));
         $$(".table-responsive tbody tr").get(5).$$("td").get(1).shouldHave(text(subjectsInput));
 
         //Check Hobbies
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(6).$$("td").get(1));
+        System.out.println("Check Student Hobbies:" + $$(".table-responsive tbody tr").get(6).$$("td").get(1));
         $$(".table-responsive tbody tr").get(6).$$("td").get(1).shouldHave(text(Hobbies));
 
         //Check Picture
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(7).$$("td").get(1));
-        pos = fullPath.lastIndexOf("/") + 1;
+        System.out.println("Check Student Picture:" + $$(".table-responsive tbody tr").get(7).$$("td").get(1));
+        pos = fullPath.lastIndexOf("\\") + 1;
         stemp = fullPath.substring(pos);
         $$(".table-responsive tbody tr").get(7).$$("td").get(1).shouldHave(text(stemp));
 
         //Check Current Address
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(8).$$("td").get(1));
+        System.out.println("Check Student Current Address:" + $$(".table-responsive tbody tr").get(8).$$("td").get(1));
         $$(".table-responsive tbody tr").get(8).$$("td").get(1).shouldHave(text(currentAddress));
 
         //Check State and City
-        System.out.println("Check Student Name:" + $$(".table-responsive tbody tr").get(9).$$("td").get(1));
+        System.out.println("Check State and City:" + $$(".table-responsive tbody tr").get(9).$$("td").get(1));
         $$(".table-responsive tbody tr").get(9).$$("td").get(1).shouldHave(text(stateAndCity));
 
         System.out.println("The test is done!");

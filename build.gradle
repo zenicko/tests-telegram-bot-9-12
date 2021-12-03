@@ -3,7 +3,6 @@ plugins {
     id "io.qameta.allure" version "2.9.6"
 }
 
-
 allure {
     report {
         version.set("2.14.0")
@@ -36,8 +35,7 @@ dependencies {
     // testImplementation 'io.qameta.allure:allure-selenide:2.14.0'
 
     //Selenide
-    testImplementation 'com.codeborne:selenide:5.25.0-selenium-4.0.0'
-
+    testImplementation 'com.codeborne:selenide:5.24.0' //selenium-3.141.59
     //
     testRuntimeOnly 'org.slf4j:slf4j-simple:1.7.29'
 }

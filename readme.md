@@ -28,6 +28,7 @@ ___
 5. Change build.gradle, add ex-logging.
 6. Add using selenoid.
 7. Change method upload file in the form
+8. Change version of selenide from 5.25 to 5.24. Unwork uploadFromClasspath. 
 
 ## What's new
 ### Jenkins
@@ -84,3 +85,7 @@ lifeCycle.addAttachment(LocalDateTime.now().format(DateTimeFormatter.ofPattern("
 "image/png", "png", takeScreenShot());
 
 ## Notes of Reviewer
+
+
+
+
