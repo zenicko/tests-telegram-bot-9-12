@@ -34,7 +34,7 @@ ___
 10. Changed class ExTests: added different methods for present some features.
 ### The branch refactoringclassPFT
 11. Created class `BaseClass`. Refactoring class `PracticeFormTests`. Created class `Attachments`. 
-
+12. Changed slash to backslash.
 
 ## What's new
 ### Jenkins

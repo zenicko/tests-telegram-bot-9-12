@@ -18,7 +18,7 @@ public class DataTests {
                 subjectsInput = "Hindi",
                 hobbies = "Reading",
                 currentAddress = "RU, Moscow, st. Baba Galya, 1",
-                fullPath = "img\\photo_2020-11-17_15-25-27.jpg",
+                fullPath = "img/photo_2020-11-17_15-25-27.jpg",
                 state = "NCR",
                 city = "Delhi";
 

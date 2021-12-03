@@ -151,7 +151,7 @@ public class PracticeFormTests extends BaseClass {
         //Check Picture
         System.out.println("Check Student Picture:" +
                 $$(".table-responsive tbody tr").get(7).$$("td").get(1));
-        pos = expectedData.get("Picture").lastIndexOf("\\") + 1;
+        pos = expectedData.get("Picture").lastIndexOf("/") + 1;
         stemp = expectedData.get("Picture").substring(pos);
         $$(".table-responsive tbody tr").get(7).$$("td").get(1).
                 shouldHave(text(stemp));
