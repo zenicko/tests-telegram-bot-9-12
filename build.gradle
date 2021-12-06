@@ -32,7 +32,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     //Listener for Allure
-    // testImplementation 'io.qameta.allure:allure-selenide:2.14.0'
+    //testImplementation 'io.qameta.allure:allure-selenide:2.14.0'
+
+    // Owner API
+    testImplementation 'org.aeonbits.owner:owner:1.0.12'
 
     //Selenide
     testImplementation 'com.codeborne:selenide:5.24.0' //selenium-3.141.59

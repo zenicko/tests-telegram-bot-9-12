@@ -3,13 +3,17 @@ package ru.zenicko.tests;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.zenicko.Attachments;
+import ru.zenicko.helpers.ServerConfig;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static java.lang.String.format;
 
 public class BaseClass {
 
@@ -25,8 +29,10 @@ public class BaseClass {
 
     @BeforeAll
     static void screenSize() {
+        ServerConfig cfg = ConfigFactory.create(ServerConfig.class);
+        String url = System.getProperty("url", "selenoid.autotests.cloud/wd/hub/");
         Configuration.startMaximized = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        Configuration.remote = format("https://%s:%s@%s",cfg.username(), cfg.password(), url);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

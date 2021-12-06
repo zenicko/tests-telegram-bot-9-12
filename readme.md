@@ -26,9 +26,22 @@ ___
 ## Steps
 1. Update the readme file.
 2. Create the class `SystemPropertiesTests.java`. Pass parameters to a test from a command line gradle.
+3. Noncommite. Set parameters in Jenkins.
+#### Branch `ownerfeature`
+4. Use `Owner API`. Hidden the username and password in a file.
 
-## What's new
+## What's newgit 
+### Owner API
+1. Dependencies 'org.aeonbits.owner:owner:1.0.12'
 ### Jenkins
+1. Pass parameters in Jenkins. The command lane:
+```
+clean many_params
+-Dbrowser=${BROWSER}
+-Dversion=${VERSION}
+-Ddimension=${DIMENSION}
+```
+2.
 ### Gradle
 1. See all tasks
    `gradlew.bat tasks --all`
@@ -46,30 +59,10 @@ ___
 
 
 ## Resources
-https://stackoverflow.com/questions/11696521/how-to-pass-arguments-from-command-line-to-gradle/58202665#58202665
-
-task(runProgram, type: JavaExec) {
-
-[...]
-
-if (project.hasProperty('myargs')) {
-args(myargs.split(','))
-}
-
-
-plugins {
-id 'application'
-}
-
-mainClassName = "my.App"
-
-public class App {
-public static void main(String[] args) {
-System.out.println(args);
-}
-}
-
-gradlew run --args="This string will be passed into my.App#main arguments"
+1. [The expamples of using `args`](https://stackoverflow.com/questions/11696521/how-to-pass-arguments-from-command-line-to-gradle/58202665#58202665)
+2. [Site `Owner API`](https://owner.aeonbits.org/)
+   1. [Basic usage](http://owner.aeonbits.org/docs/usage/)
+   2. [Repo](`https://mvnrepository.com/artifact/org.aeonbits.owner/owner/1.0.12`)
 ## Notes of Reviewer
 
 

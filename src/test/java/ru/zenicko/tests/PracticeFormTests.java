@@ -1,6 +1,7 @@
 package ru.zenicko.tests;
 
 import io.qameta.allure.*;
+import org.aeonbits.owner.Config;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
