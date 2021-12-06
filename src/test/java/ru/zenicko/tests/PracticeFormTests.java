@@ -1,9 +1,10 @@
-package ru.zenicko;
+package ru.zenicko.tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+
 import java.util.Map;
 
 import static com.codeborne.selenide.Condition.text;

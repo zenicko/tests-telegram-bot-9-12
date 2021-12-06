@@ -1,4 +1,4 @@
-package ru.zenicko;
+package ru.zenicko.tests;
 
 import java.util.HashMap;
 import java.util.Map;

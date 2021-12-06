@@ -1,4 +1,4 @@
-package ru.zenicko;
+package ru.zenicko.tests;
 
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Allure;
@@ -6,6 +6,7 @@ import io.qameta.allure.AllureLifecycle;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import ru.zenicko.Attachments;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
