@@ -20,8 +20,9 @@ ___
 ## Steps
 1. Created a project by repo the hometask 11.Управляем параметрами в коде и в Jenkins
 2. Update classes of the project and fixed bug.
-3. Created the direction `notification' with a config file and a jar-file.
-
+3. Created the direction `notification' with a config file and a jar-file. 
+Created the notification to telegram
+4. Created the notification to slack. Set Jenkins' settings for notifications telegram and slack.
 
 ## What's new
 ### Jenkins
@@ -37,8 +38,19 @@ java  \
 -jar notification/allure-notifications-3.1.2.jar
 ```
 `java  "-DprojectName=PROJECT_NAME" "-Denv=ENVIRONMENT" "-DreportLink=BUILD_URL" "-Dcomm=Any comment here" "-Dconfig.file=notification/telegram.json" -jar notification/allure-notifications-3.1.2.jar`
+### Shell
+1. Check on existing of a file- 
+```
+cd ..
+FILE=./allure-notifications-3.1.2.jar
+if [ ! -f "$FILE" ]; then
+   wget https://github.com/qa-guru/allure-notifications/releases/download/3.1.2/allure-notifications-3.1.2.jar
+fi
 
-2. 
+```
+
+
+
 ### Gradle
 ### Git
 ## Resources

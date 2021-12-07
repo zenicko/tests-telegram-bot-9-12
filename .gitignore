@@ -2,9 +2,12 @@
 .gradle/
 gradle/
 build/
+notification/*.*
+
 
 *.log
 *.properties
 gradlew
 gradlew.bat
 *.png
+
