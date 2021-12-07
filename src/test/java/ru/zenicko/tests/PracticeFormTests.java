@@ -1,8 +1,8 @@
 package ru.zenicko.tests;
 
 import io.qameta.allure.*;
-import org.aeonbits.owner.Config;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -12,9 +12,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 @DisplayName("Ya, Jenkins will be with you everywhere!")
-public class PracticeFormTests extends BaseClass {
+public class PracticeFormTests extends BaseTests {
 
     @Test
+    @Tag("test_form_demoga")
     @DisplayName("Testing the students form")
     @Feature("The form from https://demoqa.com/automation-practice-form")
     @Story("Using the common pattern")

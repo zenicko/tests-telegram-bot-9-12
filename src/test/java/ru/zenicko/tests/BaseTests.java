@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 import static java.lang.String.format;
 
-public class BaseClass {
+public class BaseTests {
 
     private AllureLifecycle lifeCycle;
 

@@ -19,6 +19,7 @@ ___
 
 ## Steps
 1. Created a project by repo the hometask 11.Управляем параметрами в коде и в Jenkins
+2. Update classes of the project and fixed bug.
 
 
 ## What's new

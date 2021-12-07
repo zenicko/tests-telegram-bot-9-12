@@ -65,5 +65,15 @@ task many_params(type: Test){
     systemProperty("dimension", System.getProperty("dimension", "1000x300"))
     useJUnitPlatform {
         includeTags "properties"
+        includeTags "example_tests"
+
     }
 }
+task test_form_demoga(type: Test){
+    useJUnitPlatform {
+        includeTags "test_form_demoga"
+
+    }
+}
+
+

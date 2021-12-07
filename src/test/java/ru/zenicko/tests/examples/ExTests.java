@@ -1,11 +1,9 @@
 package ru.zenicko.examples;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@Tag("example_tests")
 @DisplayName("Test suite: Annotations in use")
 public class ExTests {
 
