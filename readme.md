@@ -25,7 +25,6 @@ Created the notification to telegram
 4. Created the notification to slack. Set Jenkins' settings for notifications telegram and slack.
 
 ## What's new
-### Jenkins
 ### Allure-notifications
 1. Command 
 ```
@@ -39,7 +38,7 @@ java  \
 ```
 `java  "-DprojectName=PROJECT_NAME" "-Denv=ENVIRONMENT" "-DreportLink=BUILD_URL" "-Dcomm=Any comment here" "-Dconfig.file=notification/telegram.json" -jar notification/allure-notifications-3.1.2.jar`
 ### Shell
-1. Check on existing of a file- 
+1. Check on existing of a file 
 ```
 cd ..
 FILE=./allure-notifications-3.1.2.jar
@@ -48,20 +47,11 @@ if [ ! -f "$FILE" ]; then
 fi
 
 ```
-
-
-
-### Gradle
-### Git
 ## Resources
-[Ссылка на репозиторий](https://github.com/qa-guru/qa_guru_9_10_jenkins/tree/notifications)
-[Jenkins](https://jenkins.autotests.cloud/job/teacher-iTerkin-qa_guru_9_12_jenkins_telegram/)
-Зарегистрировать бота в Telgram `@BotFather`
+1. [Ссылка на репозиторий](https://github.com/qa-guru/qa_guru_9_10_jenkins/tree/notifications)
+2. [Jenkins](https://jenkins.autotests.cloud/job/teacher-iTerkin-qa_guru_9_12_jenkins_telegram/)
+3. [Repo Allure notifications](https://github.com/qa-guru/allure-notifications)
 
-Узнать chat ID (вместо Your_BOTToken вставить токена вашего бота) `https://api.telegram.org/bot{secret_bot}/getUpdates`
-
-[Repo Allure notifications](https://github.com/qa-guru/allure-notifications)
-## Notes of Reviewer
 
 
 
