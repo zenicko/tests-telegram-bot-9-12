@@ -20,14 +20,35 @@ ___
 ## Steps
 1. Created a project by repo the hometask 11.Управляем параметрами в коде и в Jenkins
 2. Update classes of the project and fixed bug.
+3. Created the direction `notification' with a config file and a jar-file.
 
 
 ## What's new
-### Owner API
 ### Jenkins
+### Allure-notifications
+1. Command 
+```
+java  \
+"-DprojectName=PROJECT_NAME" \
+"-Denv=ENVIRONMENT" \
+"-DreportLink=BUILD_URL" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notification/telegram.json" \
+-jar notification/allure-notifications-3.1.2.jar
+```
+`java  "-DprojectName=PROJECT_NAME" "-Denv=ENVIRONMENT" "-DreportLink=BUILD_URL" "-Dcomm=Any comment here" "-Dconfig.file=notification/telegram.json" -jar notification/allure-notifications-3.1.2.jar`
+
+2. 
 ### Gradle
 ### Git
 ## Resources
+[Ссылка на репозиторий](https://github.com/qa-guru/qa_guru_9_10_jenkins/tree/notifications)
+[Jenkins](https://jenkins.autotests.cloud/job/teacher-iTerkin-qa_guru_9_12_jenkins_telegram/)
+Зарегистрировать бота в Telgram `@BotFather`
+
+Узнать chat ID (вместо Your_BOTToken вставить токена вашего бота) `https://api.telegram.org/bot{secret_bot}/getUpdates`
+
+[Repo Allure notifications](https://github.com/qa-guru/allure-notifications)
 ## Notes of Reviewer
 
 

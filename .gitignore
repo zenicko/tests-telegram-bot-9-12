@@ -3,6 +3,8 @@
 gradle/
 build/
 
+*.log
 *.properties
 gradlew
 gradlew.bat
+*.png
